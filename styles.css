@@ -85,8 +85,13 @@ textarea{
   min-height:60px;
 }
 
-input[type="color"]{
-  display:none;
+input[type="color"],
+input[type="file"]{
+  position:absolute;
+  opacity:0;
+  width:0;
+  height:0;
+  pointer-events:none;
 }
 
 button{
@@ -111,14 +116,30 @@ button:hover{transform:scale(1.05);}
   background:#082c6b;
 }
 
-#preview{margin-top:20px;text-align:center;}
+#preview{
+  margin-top:20px;
+  text-align:center;
+}
+
+.actions{
+  margin-top:15px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+}
 
 label{color:#fff;}
 
 @media (max-width:768px){
+  body{
+    align-items:flex-start;
+    padding:16px 0;
+  }
+
   .app{
-    width:90%;
-    padding:20px;
+    width:92%;
+    padding:24px 18px;
   }
 
   h2{
@@ -126,26 +147,25 @@ label{color:#fff;}
   }
 
   input,textarea{
-    width:auto;
+    width:100%;
+    max-width:280px;
     font-size:1rem;
   }
 
   .radio-group{
-    flex-direction:column;
+    flex-wrap:wrap;
     gap:10px;
     align-items:center;
   }
 
   button{
-    width:auto;
-    min-width:120px;
-    margin:8px 0;
-    font-size:1.1rem;
+    min-width:130px;
+    margin:8px 6px;
+    font-size:1rem;
   }
 
   #preview{
-    overflow-x:auto;
-    max-height:50vh;
+    margin-top:24px;
   }
 
   .app.generando{

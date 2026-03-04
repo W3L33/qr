@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Generador códigos</title>
 
 <link rel="stylesheet" href="styles.css">
@@ -36,7 +37,7 @@
 <input type="color" id="colorQR" value="#000000">
 <button type="button" class="btn-azul" onclick="document.getElementById('colorQR').click()">Color</button>
 
-<input type="file" id="logo" accept="image/*" style="display:none">
+<input type="file" id="logo" accept="image/*" style="position:absolute;opacity:0;width:0;height:0;pointer-events:none">
 <button type="button" class="btn-azul" onclick="document.getElementById('logo').click()">Logo</button>
 
 </div>
@@ -74,9 +75,10 @@
 
 </div>
 
-<br>
+<div class="actions">
 <button onclick="generar()">Generar</button>
 <button id="btnDescargar" onclick="descargar()" class="hidden">Descargar QR</button>
+</div>
 
 <div id="preview">
 <div id="qrContainer"></div>

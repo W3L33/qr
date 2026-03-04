@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Generador QR & Código de Barras</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0/lib/qr-code-styling.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+</head>
+<body>
+<div class="app">
+<h2 id="tituloApp">Generar QR</h2>
+<div class="radio-group">
+<label><input type="radio" name="modo" value="qr" checked onchange="cambiarModo()"> QR</label>
+<label><input type="radio" name="modo" value="barcode" onchange="cambiarModo()"> Código de Barras</label>
+</div>
+
+<div id="qrSection">
+
+<div class="radio-group">
+<label><input type="radio" name="qrTipo" value="url" checked onchange="resetQR();cambiarFormulario()"> URL</label>
+<label><input type="radio" name="qrTipo" value="texto" onchange="resetQR();cambiarFormulario()"> Texto</label>
+<label><input type="radio" name="qrTipo" value="wifi" onchange="resetQR();cambiarFormulario()"> WiFi</label>
+<label><input type="radio" name="qrTipo" value="contacto" onchange="resetQR();cambiarFormulario()"> Contacto</label>
+<label><input type="radio" name="qrTipo" value="evento" onchange="resetQR();cambiarFormulario()"> Evento</label>
+<label><input type="radio" name="qrTipo" value="llamada" onchange="resetQR();cambiarFormulario()"> Llamada</label>
+<label><input type="radio" name="qrTipo" value="sms" onchange="resetQR();cambiarFormulario()"> SMS</label>
+<label><input type="radio" name="qrTipo" value="correo" onchange="resetQR();cambiarFormulario()"> Correo</label>
+<label><input type="radio" name="qrTipo" value="ubicacion" onchange="resetQR();cambiarFormulario()"> Ubicación</label>
+</div>
+
+<div id="formulario"></div>
+
+<input type="color" id="colorQR" value="#000000">
+<button type="button" class="btn-azul" onclick="document.getElementById('colorQR').click()">Color</button>
+
+<input type="file" id="logo" accept="image/*" style="display:none">
+<button type="button" class="btn-azul" onclick="document.getElementById('logo').click()">Logo</button>
+
+</div>
+
+<div id="barcodeSection" class="hidden">
+
+<div class="radio-group">
+<label title="Alfanumérico completo. Alta densidad. Checksum interno automático.">
+<input type="radio" name="barcodeTipo" value="CODE128" checked onchange="resetBarcode();controlInput()"> Code128</label>
+
+<label title="13 dígitos. Incluye dígito verificador módulo-10. Uso retail internacional.">
+<input type="radio" name="barcodeTipo" value="EAN13" onchange="resetBarcode();controlInput()"> EAN-13</label>
+
+<label title="8 dígitos. Versión compacta de EAN-13. Incluye dígito verificador.">
+<input type="radio" name="barcodeTipo" value="EAN8" onchange="resetBarcode();controlInput()"> EAN-8</label>
+
+<label title="12 dígitos. Estándar norteamericano. Incluye dígito verificador módulo-10.">
+<input type="radio" name="barcodeTipo" value="UPC" onchange="resetBarcode();controlInput()"> UPC-A</label>
+
+<label title="Solo numérico. Longitud par obligatoria. Uso logístico.">
+<input type="radio" name="barcodeTipo" value="ITF" onchange="resetBarcode();controlInput()"> ITF</label>
+
+<label title="14 dígitos. Variante logística (GTIN-14). Incluye dígito verificador.">
+<input type="radio" name="barcodeTipo" value="ITF14" onchange="resetBarcode();controlInput()"> ITF-14</label>
+
+<label title="Alfanumérico compacto. Doble checksum interno.">
+<input type="radio" name="barcodeTipo" value="CODE93" onchange="resetBarcode();controlInput()"> Code93</label>
+
+<label title="Numérico con símbolos especiales. Requiere carácter inicio/fin (A-D).">
+<input type="radio" name="barcodeTipo" value="CODABAR" onchange="resetBarcode();controlInput()"> Codabar</label>
+</div>
+
+<input type="text" id="barcodeContenido" placeholder="Contenido">
+<input type="color" id="colorBarcode" value="#000000">
+
+</div>
+
+<br>
+<button onclick="generar()">Generar</button>
+<button id="btnDescargar" onclick="descargar()" class="hidden">Descargar QR</button>
+
+<div id="preview">
+<div id="qrContainer"></div>
+<canvas id="barcode"></canvas>
+</div>
+
+<script src="script.js"></script>
+</div>
+</body>
+</html>

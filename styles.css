@@ -1,111 +1,149 @@
 body{
-margin:0;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(135deg,#1e3c72,#2a5298);
-font-family:Arial;
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#1e3c72,#2a5298);
+  font-family:Arial;
 }
 
 .app{
-width:100%;
-max-width:1000px;
-padding:40px;
-border-radius:25px;
-background:rgba(255,255,255,0.08);
-backdrop-filter:blur(18px);
--webkit-backdrop-filter:blur(18px);
-box-shadow:
-0 15px 40px rgba(0,0,0,0.4),
-inset 0 0 20px rgba(255,255,255,0.15);
-text-align:center;
+  width:100%;
+  max-width:1000px;
+  padding:40px;
+  border-radius:25px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.4),
+    inset 0 0 20px rgba(255,255,255,0.15);
+  text-align:center;
 }
 
 h2{
-margin-top:0;
-font-size:2.5rem;
-font-weight:700;
-font-family:"Segoe UI", Arial, sans-serif;
-color:#00c6ff;
-transition:color .3s ease;
+  margin-top:0;
+  font-size:2.5rem;
+  font-weight:700;
+  font-family:"Segoe UI", Arial, sans-serif;
+  color:#00c6ff;
+  transition:color .3s ease;
 }
 
 .hidden{display:none}
 
 .radio-group{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-justify-content:center;
-margin:15px 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin:15px 0;
 }
 
 input[type="radio"]{display:none;}
 
 .radio-group label{
-padding:8px 16px;
-border-radius:10px;
-background:rgba(255,255,255,0.15);
-color:#fff;
-cursor:pointer;
-transition:.25s;
-user-select:none;
+  padding:8px 16px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.15);
+  color:#fff;
+  cursor:pointer;
+  transition:.25s;
+  user-select:none;
 }
 
 .radio-group label:hover{
-background:rgba(255,255,255,0.3);
+  background:rgba(255,255,255,0.3);
 }
 
 .radio-group label:has(input[type="radio"]:checked){
-background:#00c6ff;
-color:#000;
-box-shadow:0 0 12px rgba(0,198,255,.8);
+  background:#00c6ff;
+  color:#000;
+  box-shadow:0 0 12px rgba(0,198,255,.8);
 }
 
 input,textarea{
-padding:6px;
-margin:8px auto;
-border-radius:8px;
-border:none;
-outline:none;
-width:320px;
-max-width:100%;
-box-sizing:border-box;
-display:block;
+  padding:6px;
+  margin:8px auto;
+  border-radius:8px;
+  border:none;
+  outline:none;
+  width:320px;
+  max-width:100%;
+  box-sizing:border-box;
+  display:block;
 }
 
 textarea{
-resize:vertical;
-min-height:60px;
+  resize:vertical;
+  min-height:60px;
 }
 
 input[type="color"]{
-display:none;
+  display:none;
 }
 
 button{
-padding:6px 12px;
-margin:5px;
-border:none;
-border-radius:8px;
-background:#00c6ff;
-color:#000;
-cursor:pointer;
-transition:.2s;
+  padding:6px 12px;
+  margin:5px;
+  border:none;
+  border-radius:8px;
+  background:#00c6ff;
+  color:#000;
+  cursor:pointer;
+  transition:.2s;
 }
 
 button:hover{transform:scale(1.05);}
 
 .btn-azul{
-background:#0b3d91;
-color:#ffffff;
+  background:#0b3d91;
+  color:#ffffff;
 }
 
 .btn-azul:hover{
-background:#082c6b;
+  background:#082c6b;
 }
 
 #preview{margin-top:20px;text-align:center;}
 
 label{color:#fff;}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+
+  /* Ajusta el recuadro semitransparente al ancho del dispositivo */
+  .app {
+    width: 90%;
+    padding: 20px;
+  }
+
+  /* Titulos más pequeños en móviles */
+  h2 {
+    font-size: 2rem;
+  }
+
+  /* Inputs y textarea ocupen todo el ancho disponible */
+  input, textarea {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  /* Botones apilados y ocupando todo el ancho */
+  button {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  /* Radio buttons envueltos correctamente y ajustados */
+  .radio-group {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Preview de QR/Barcode ajustable */
+  #preview {
+    overflow-x: auto;
+  }
+}

@@ -16,6 +16,7 @@
 <div class="radio-group">
 <label><input type="radio" name="modo" value="qr" checked onchange="cambiarModo()"> QR</label>
 <label><input type="radio" name="modo" value="barcode" onchange="cambiarModo()"> Código de Barras</label>
+<label><input type="radio" name="modo" value="leer" onchange="cambiarModo()"> Leer Código</label>
 </div>
 
 <div id="qrSection">
@@ -34,11 +35,15 @@
 
 <div id="formulario"></div>
 
-<input type="color" id="colorQR" value="#000000">
-<button type="button" class="btn-azul" onclick="document.getElementById('colorQR').click()">Color</button>
+<div class="input-overlay-wrap" title="Elegir color">
+<input type="color" id="colorQR" value="#000000" aria-label="Color del QR">
+<button type="button" class="btn-azul">Color</button>
+</div>
 
-<input type="file" id="logo" accept="image/*" style="position:absolute;opacity:0;width:0;height:0;pointer-events:none">
-<button type="button" class="btn-azul" onclick="document.getElementById('logo').click()">Logo</button>
+<div class="input-overlay-wrap" title="Subir logo">
+<input type="file" id="logo" accept="image/*" aria-label="Logo">
+<button type="button" class="btn-azul">Logo</button>
+</div>
 
 </div>
 
@@ -71,7 +76,10 @@
 </div>
 
 <input type="text" id="barcodeContenido" placeholder="Contenido">
-<input type="color" id="colorBarcode" value="#000000">
+<div class="input-overlay-wrap" title="Elegir color">
+<input type="color" id="colorBarcode" value="#000000" aria-label="Color del código de barras">
+<button type="button" class="btn-azul">Color</button>
+</div>
 
 </div>
 
@@ -83,8 +91,24 @@
 <div id="preview">
 <div id="qrContainer"></div>
 <canvas id="barcode"></canvas>
+<div id="generatedImageWrap" class="hidden"><img id="generatedImage" alt="Código generado" decoding="async"></div>
 </div>
 
+<div id="leerSection" class="hidden">
+<div class="leer-actions">
+<button type="button" class="btn-azul" id="btnLeerImagen">Seleccionar imagen</button>
+<button type="button" class="btn-azul" id="btnLeerCamara">Usar cámara</button>
+</div>
+<input type="file" id="leerArchivo" accept="image/*" class="hidden">
+<div id="leerCamaraWrap" class="hidden">
+<video id="leerVideo" autoplay playsinline muted></video>
+<button type="button" class="btn-cerrar-camara" id="btnCerrarCamara">Cerrar cámara</button>
+</div>
+<div id="leerResultado" class="leer-resultado hidden"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@zxing/library@0.19.1/umd/index.min.js"></script>
 <script src="script.js"></script>
 </div>
 </body>
